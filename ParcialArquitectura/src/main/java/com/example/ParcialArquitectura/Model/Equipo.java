@@ -1,98 +1,71 @@
 package com.example.ParcialArquitectura.Model;
 
-
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 public class Equipo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_equipo;
+    private Long idEquipo;
 
+    private String nombre;
+    private String ciudad;
+    private LocalDate fundacion;
 
-    private String NombreEquipo;
-    private String Ciudad;
-    private Date fundacion;
+    @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
+    private List<Jugador> jugadores;
 
+    @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
+    private List<Entrenador> entrenadores;
 
-    @OneToMany(mappedBy = "id_jugador")
-    private List<Jugador> id_jugador;
-
-    @OneToMany(mappedBy = "id_entrenador")
-    private List<Entrenador> id_entrenador;
-
-    @OneToMany(mappedBy = "id_partido")
-    private List<Partido> id_partido;
-
-
-    public Equipo() {
-    }
-    public Equipo(int id_equipo, String nombreEquipo, String ciudad, Date fundacion, List<Jugador> id_jugador, List<Entrenador> id_entrenador, List<Partido> id_partido) {
-        this.id_equipo = id_equipo;
-        NombreEquipo = nombreEquipo;
-        Ciudad = ciudad;
-        this.fundacion = fundacion;
-        this.id_jugador = id_jugador;
-        this.id_entrenador = id_entrenador;
-        this.id_partido = id_partido;
+    public Long getIdEquipo() {
+        return idEquipo;
     }
 
-    public int getId_equipo() {
-        return id_equipo;
+    public void setIdEquipo(Long idEquipo) {
+        this.idEquipo = idEquipo;
     }
 
-    public void setId_equipo(int id_equipo) {
-        this.id_equipo = id_equipo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getNombreEquipo() {
-        return NombreEquipo;
-    }
-
-    public void setNombreEquipo(String nombreEquipo) {
-        NombreEquipo = nombreEquipo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getCiudad() {
-        return Ciudad;
+        return ciudad;
     }
 
     public void setCiudad(String ciudad) {
-        Ciudad = ciudad;
+        this.ciudad = ciudad;
     }
 
-    public Date getFundacion() {
+    public LocalDate getFundacion() {
         return fundacion;
     }
 
-    public void setFundacion(Date fundacion) {
+    public void setFundacion(LocalDate fundacion) {
         this.fundacion = fundacion;
     }
 
-    public List<Jugador> getId_jugador() {
-        return id_jugador;
+    public List<Jugador> getJugadores() {
+        return jugadores;
     }
 
-    public void setId_jugador(List<Jugador> id_jugador) {
-        this.id_jugador = id_jugador;
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
     }
 
-    public List<Entrenador> getId_entrenador() {
-        return id_entrenador;
+    public List<Entrenador> getEntrenadores() {
+        return entrenadores;
     }
 
-    public void setId_entrenador(List<Entrenador> id_entrenador) {
-        this.id_entrenador = id_entrenador;
-    }
-
-    public List<Partido> getId_partido() {
-        return id_partido;
-    }
-
-    public void setId_partido(List<Partido> id_partido) {
-        this.id_partido = id_partido;
+    public void setEntrenadores(List<Entrenador> entrenadores) {
+        this.entrenadores = entrenadores;
     }
 }

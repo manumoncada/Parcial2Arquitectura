@@ -1,38 +1,25 @@
 package com.example.ParcialArquitectura.Model;
-
 import jakarta.persistence.*;
 
 @Entity
 public class Entrenador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_entrenador;
+    private Long idEntrenador;
 
     private String nombre;
     private String especialidad;
-    private int id_equipo;
 
     @ManyToOne
     @JoinColumn(name = "id_equipo")
     private Equipo equipo;
 
-    public Entrenador() {
+    public Long getIdEntrenador() {
+        return idEntrenador;
     }
 
-    public Entrenador(int id_entrenador, String nombre, String especialidad, int id_equipo, Equipo equipo) {
-        this.id_entrenador = id_entrenador;
-        this.nombre = nombre;
-        this.especialidad = especialidad;
-        this.id_equipo = id_equipo;
-        this.equipo = equipo;
-    }
-
-    public int getId_entrenador() {
-        return id_entrenador;
-    }
-
-    public void setId_entrenador(int id_entrenador) {
-        this.id_entrenador = id_entrenador;
+    public void setIdEntrenador(Long idEntrenador) {
+        this.idEntrenador = idEntrenador;
     }
 
     public String getNombre() {
@@ -49,14 +36,6 @@ public class Entrenador {
 
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
-    }
-
-    public int getId_equipo() {
-        return id_equipo;
-    }
-
-    public void setId_equipo(int id_equipo) {
-        this.id_equipo = id_equipo;
     }
 
     public Equipo getEquipo() {

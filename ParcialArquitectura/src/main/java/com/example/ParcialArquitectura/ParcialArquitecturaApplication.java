@@ -9,5 +9,4 @@ public class ParcialArquitecturaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ParcialArquitecturaApplication.class, args);
 	}
-
 }

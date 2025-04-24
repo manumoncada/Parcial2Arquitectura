@@ -1,53 +1,32 @@
 package com.example.ParcialArquitectura.Model;
 
+
 import jakarta.persistence.*;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 public class Jugador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_jugador;
+    private Long idJugador;
 
     private String nombre;
     private String posicion;
     private int dorsal;
-    private Date Fecha_nacimiento;
+    private LocalDate fechaNac;
     private String nacionalidad;
-    private int id_equipo;
-
-
-
-    @OneToMany(mappedBy = "id_estadistica")
-    private List<EstadisticasJugador> id_estadistica;
 
     @ManyToOne
-    @JoinColumn (name = "id_equipo")
+    @JoinColumn(name = "id_equipo")
     private Equipo equipo;
 
-    public Jugador() {
+    public Long getIdJugador() {
+        return idJugador;
     }
 
-    public Jugador(int id_jugador, String nombre, String posicion, int dorsal, Date fecha_nacimiento, String nacionalidad, int id_equipo, List<EstadisticasJugador> id_estadistica, Equipo equipo) {
-        this.id_jugador = id_jugador;
-        this.nombre = nombre;
-        this.posicion = posicion;
-        this.dorsal = dorsal;
-        Fecha_nacimiento = fecha_nacimiento;
-        this.nacionalidad = nacionalidad;
-        this.id_equipo = id_equipo;
-        this.id_estadistica = id_estadistica;
-        this.equipo = equipo;
-    }
-
-    public int getId_jugador() {
-        return id_jugador;
-    }
-
-    public void setId_jugador(int id_jugador) {
-        this.id_jugador = id_jugador;
+    public void setIdJugador(Long idJugador) {
+        this.idJugador = idJugador;
     }
 
     public String getNombre() {
@@ -74,12 +53,12 @@ public class Jugador {
         this.dorsal = dorsal;
     }
 
-    public Date getFecha_nacimiento() {
-        return Fecha_nacimiento;
+    public LocalDate getFechaNac() {
+        return fechaNac;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
-        Fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNac(LocalDate fechaNac) {
+        this.fechaNac = fechaNac;
     }
 
     public String getNacionalidad() {
@@ -88,22 +67,6 @@ public class Jugador {
 
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
-    }
-
-    public int getId_equipo() {
-        return id_equipo;
-    }
-
-    public void setId_equipo(int id_equipo) {
-        this.id_equipo = id_equipo;
-    }
-
-    public List<EstadisticasJugador> getId_estadistica() {
-        return id_estadistica;
-    }
-
-    public void setId_estadistica(List<EstadisticasJugador> id_estadistica) {
-        this.id_estadistica = id_estadistica;
     }
 
     public Equipo getEquipo() {

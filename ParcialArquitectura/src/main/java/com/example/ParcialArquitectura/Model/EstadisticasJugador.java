@@ -1,75 +1,42 @@
 package com.example.ParcialArquitectura.Model;
 
+
 import jakarta.persistence.*;
 
 @Entity
 public class EstadisticasJugador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_estadistica;
+    private Long idEstadistica;
 
-    private int id_jugador;
-    private int id_partido;
-    private int minutos_jugados;
+    private int minutosJugados;
     private int goles;
     private int asistencias;
-    private int tarjetas_amarillas;
-    private int tarjetas_rojas;
+    private int tarjetasAmarillas;
+    private int tarjetasRojas;
 
     @ManyToOne
-    @JoinColumn (name = "id_jugador")
+    @JoinColumn(name = "id_jugador")
     private Jugador jugador;
 
     @ManyToOne
-    @JoinColumn (name = "id_partido")
+    @JoinColumn(name = "id_partido")
     private Partido partido;
 
-    public EstadisticasJugador() {
+    public Long getIdEstadistica() {
+        return idEstadistica;
     }
 
-    public EstadisticasJugador(int id_estadistica, int id_jugador, int id_partido, int minutos_jugados, int goles, int asistencias, int tarjetas_amarillas, int tarjetas_rojas, Jugador jugador, Partido partido) {
-        this.id_estadistica = id_estadistica;
-        this.id_jugador = id_jugador;
-        this.id_partido = id_partido;
-        this.minutos_jugados = minutos_jugados;
-        this.goles = goles;
-        this.asistencias = asistencias;
-        this.tarjetas_amarillas = tarjetas_amarillas;
-        this.tarjetas_rojas = tarjetas_rojas;
-        this.jugador = jugador;
-        this.partido = partido;
+    public void setIdEstadistica(Long idEstadistica) {
+        this.idEstadistica = idEstadistica;
     }
 
-    public int getId_estadistica() {
-        return id_estadistica;
+    public int getMinutosJugados() {
+        return minutosJugados;
     }
 
-    public void setId_estadistica(int id_estadistica) {
-        this.id_estadistica = id_estadistica;
-    }
-
-    public int getId_jugador() {
-        return id_jugador;
-    }
-
-    public void setId_jugador(int id_jugador) {
-        this.id_jugador = id_jugador;
-    }
-
-    public int getId_partido() {
-        return id_partido;
-    }
-
-    public void setId_partido(int id_partido) {
-        this.id_partido = id_partido;
-    }
-
-    public int getMinutos_jugados() {
-        return minutos_jugados;
-    }
-
-    public void setMinutos_jugados(int minutos_jugados) {
-        this.minutos_jugados = minutos_jugados;
+    public void setMinutosJugados(int minutosJugados) {
+        this.minutosJugados = minutosJugados;
     }
 
     public int getGoles() {
@@ -88,20 +55,20 @@ public class EstadisticasJugador {
         this.asistencias = asistencias;
     }
 
-    public int getTarjetas_amarillas() {
-        return tarjetas_amarillas;
+    public int getTarjetasAmarillas() {
+        return tarjetasAmarillas;
     }
 
-    public void setTarjetas_amarillas(int tarjetas_amarillas) {
-        this.tarjetas_amarillas = tarjetas_amarillas;
+    public void setTarjetasAmarillas(int tarjetasAmarillas) {
+        this.tarjetasAmarillas = tarjetasAmarillas;
     }
 
-    public int getTarjetas_rojas() {
-        return tarjetas_rojas;
+    public int getTarjetasRojas() {
+        return tarjetasRojas;
     }
 
-    public void setTarjetas_rojas(int tarjetas_rojas) {
-        this.tarjetas_rojas = tarjetas_rojas;
+    public void setTarjetasRojas(int tarjetasRojas) {
+        this.tarjetasRojas = tarjetasRojas;
     }
 
     public Jugador getJugador() {
